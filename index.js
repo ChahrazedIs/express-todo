@@ -12,9 +12,15 @@ app.engine('handlebars', exphbs(
 app.set('view engine', 'handlebars');
 
 app.get('/' , (req , res)=>{
-    res.render('index');
+    var taches = [
+        'tache 1',
+        'tache 2',
+        'tache 3'
+    ]
+    res.render('index' , {
+        taches : taches
+    }) ;
 } );
-
 
 app.listen( port , ()=>{
         console.log(` Server running on port ${port} `);
