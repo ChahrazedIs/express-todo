@@ -1,0 +1,15 @@
+{
+  "name": "express-todos",
+  "version": "1.0.0",
+  "description": "An express TODO app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
