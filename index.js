@@ -1,8 +1,20 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const exphbs  = require('express-handlebars');
 
+//=================================
+//             BODY PARSER
+//=================================
+
+var bodyParser = require('body-parser')
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+//=================================
+//             Handlebars
+//=================================
+const exphbs  = require('express-handlebars');
 
 app.engine('handlebars', exphbs(
     {
@@ -11,6 +23,9 @@ app.engine('handlebars', exphbs(
 ));
 app.set('view engine', 'handlebars');
 
+//=================================
+//    Page d'accueil
+//=================================
 app.get('/' , (req , res)=>{
     var taches = [
         'tache 1',
@@ -22,6 +37,22 @@ app.get('/' , (req , res)=>{
     }) ;
 } );
 
+//=================================
+//    Traitement du formulaire
+//=================================
+app.get('/add' , (req , res)=>{
+    res.render('add') ;
+} );
+
+app.post('/add', (req, res)=> {
+    console.log(req.body)
+
+})
+
+
+//=================================
+//    Lancement du serveur
+//=================================
 app.listen( port , ()=>{
         console.log(` Server running on port ${port} `);
     });
